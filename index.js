@@ -1,8 +1,15 @@
-// const express  = require('express')
-import express from 'express';
-import ProductController from './src/Controllers/product.controller.js';
+// import here
+import express from 'express'
+import ProductController from './src/Controllers/product.controller.js'
+import ejsLayouts from 'express-ejs-layouts'
+import path from 'path'
 const Port =3100;
-const app = express();
+const app = express()
+
+//setup view engine setting
+app.set("view engine", 'ejs')
+app.set('views', path.join(path.resolve(),'src','Views'))
+app.use(ejsLayouts)
  // instance of productController for use class product controller
 const productController = new ProductController();
 //default req
