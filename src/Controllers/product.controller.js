@@ -8,4 +8,15 @@ import ProductModel from '../Models/product.model.js';
 
     //  return res.sendFile(path.join(path.resolve(),'src','Views','products.html'),);
     }
+    getAddForm(req,res){
+    return res.render('new-product');
+    }
+    addNewProduct(req,res){
+       
+        ProductModel.add(req.body);
+        let products = ProductModel.get();
+       return res.render('products',{products});
+        
+
+    }
 }
