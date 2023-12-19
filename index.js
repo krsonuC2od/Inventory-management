@@ -3,6 +3,7 @@ import express from 'express'
 import ProductController from './src/Controllers/product.controller.js'
 import ejsLayouts from 'express-ejs-layouts'
 import path from 'path'
+import validationMiddleware from './src/Middlewares/validation.middleware.js'
 const Port =3100;
 const app = express()
 //parse form data
@@ -17,7 +18,7 @@ const productController = new ProductController();
 //default req
 app.get('/',productController.getProducts)
 app.get('/new',productController.getAddForm)
-app.post('/',productController.addNewProduct)
+app.post('/',validationMiddleware,productController.addNewProduct)
 
 
 
